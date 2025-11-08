@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4 col-lg-8 mx-auto">
+
+    <h3 class="mb-3">📥 Import Books from API</h3>
+
+    <form method="POST" class="d-flex gap-3 mb-4">
+        <input class="form-control" type="text" name="title" placeholder="Search book by title...">
+        <button name="action" value="search" class="btn btn-dark">🔍 Search</button>
+
+    </form>
+
+    {% if preview %}
+    <h5>Search Results</h5>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Authors</th>
+                <th>Pages</th>
+            </tr>
+        </thead>
+        <tbody>
+              {% for b in preview %}
+        <tr>
+        <td>{{ b['title'] }}</td>
+        <td>{{ b['authors'] }}</td>
+        <td>{{ b['num_pages'] }}</td>
+        </tr>
+        {% endfor %}
+            </tbody>
+    </table>
+
+    <form method="POST" class="mt-3">
+        <input type="hidden" name="title" value="{{ request.form.title }}">
+        <label>How many books to import?</label>
+        <input type="number" name="count" required class="form-control mb-2" placeholder="Example: 20">
+
+        <button name="action" value="import" class="btn btn-primary w-100">⬇ Import Books</button>
+
+    </form>
+    {% endif %}
+
+</div>
+
+{% endblock %}

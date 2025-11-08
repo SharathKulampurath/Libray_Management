@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4 col-lg-6 mx-auto">
+    <h3 class="mb-4">➕ Add New Book</h3>
+
+    <form method="POST">
+        <input type="text" class="form-control mb-3" name="title" placeholder="Book Title" required>
+        <input type="text" class="form-control mb-3" name="author" placeholder="Author Name" required>
+        <input type="text" class="form-control mb-3" name="isbn" placeholder="ISBN">
+        <input type="text" class="form-control mb-3" name="publisher" placeholder="Publisher">
+        <input type="number" class="form-control mb-3" name="pages" placeholder="Pages">
+        <input type="number" class="form-control mb-3" name="stock" placeholder="Stock Count" required>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success btn-custom px-4">Save</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

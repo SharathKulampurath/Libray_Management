@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4 col-lg-6 mx-auto">
+    <h3>Return Book</h3>
+
+    <p><strong>Book:</strong> {{ txn.book.title }}</p>
+    <p><strong>Member:</strong> {{ txn.member.name }}</p>
+    <p><strong>Issued On:</strong> {{ txn.issue_date.strftime('%d-%m-%Y') }}</p>
+
+    <form method="POST">
+        <button class="btn btn-success">Confirm Return</button>
+    </form>
+</div>
+
+{% endblock %}

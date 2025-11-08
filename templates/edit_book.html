@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4 col-lg-6 mx-auto">
+    <h3 class="mb-4">✏ Edit Book</h3>
+
+    <form method="POST">
+        <input type="text" class="form-control mb-3" name="title" value="{{ book.title }}" required>
+        <input type="text" class="form-control mb-3" name="author" value="{{ book.author }}" required>
+        <input type="text" class="form-control mb-3" name="isbn" value="{{ book.isbn }}">
+        <input type="text" class="form-control mb-3" name="publisher" value="{{ book.publisher }}">
+        <input type="number" class="form-control mb-3" name="pages" value="{{ book.pages }}">
+        <input type="number" class="form-control mb-3" name="stock" value="{{ book.stock }}" required>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary btn-custom px-4">Update</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4 col-lg-6 mx-auto">
+    <h3 class="mb-3">➕ Issue Book</h3>
+
+    <form method="POST">
+        <label class="form-label">Choose Book</label>
+        <select class="form-select mb-3" name="book_id" required>
+            {% for b in books %}
+            <option value="{{ b.id }}">{{ b.title }} (Stock: {{ b.stock }})</option>
+            {% endfor %}
+        </select>
+
+        <label class="form-label">Choose Member</label>
+        <select class="form-select mb-3" name="member_id" required>
+            {% for m in members %}
+            <option value="{{ m.id }}">{{ m.name }} (Due ₹{{ m.outstanding_fees }})</option>
+            {% endfor %}
+        </select>
+
+        <button class="btn btn-primary">Issue</button>
+    </form>
+</div>
+
+{% endblock %}

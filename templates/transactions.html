@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4">
+    <div class="d-flex justify-content-between">
+        <h3>📄 Transactions</h3>
+        <a href="/issue" class="btn btn-primary">➕ Issue Book</a>
+    </div>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Issued On</th>
+                <th>Returned On</th>
+                <th>Fee</th>
+                <th style="width: 150px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for t in txns %}
+            <tr>
+                <td>{{ t.id }}</td>
+                <td>{{ t.book.title }}</td>
+                <td>{{ t.member.name }}</td>
+                <td>{{ t.issue_date.strftime('%d-%m-%Y') }}</td>
+                <td>
+                    {% if t.return_date %}
+                        {{ t.return_date.strftime('%d-%m-%Y') }}
+                    {% else %}
+                        <span class="badge bg-warning">Not Returned</span>
+                    {% endif %}
+                </td>
+                <td>₹{{ t.fee }}</td>
+                <td>
+                    {% if not t.return_date %}
+                    <a href="/return/{{ t.id }}" class="btn btn-success btn-sm">Return</a>
+                    {% else %}
+                    <span class="badge bg-success">Completed</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
